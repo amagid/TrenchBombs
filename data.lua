@@ -1,3 +1,5 @@
+--Aggregator for all Mod data
+
 require("config.constants")
 
 require("prototypes.style")
