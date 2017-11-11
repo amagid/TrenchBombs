@@ -118,10 +118,10 @@ data: extend({
             {
                 name = "smoke-fast",
                     deviation = {
-                        0.15,
-                        0.15
+                        0,
+                        0
                     },
-                    frequency = 1,
+                    frequency = 0,
                     position = {
                         0,
                         0
