@@ -7,11 +7,7 @@ data: extend({
                 "goes-to-quickbar"
             },
             subgroup = "circuit-network",
-            place_as_tile = {
-                result = TB_NAME,
-                condition_size = 4,
-                condition = {}
-            },
+            place_result = TB_NAME,
             stack_size = 200
     },
     {

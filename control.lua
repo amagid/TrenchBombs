@@ -19,6 +19,9 @@ script.on_event(defines.events.on_player_created, function(event)
 end)
 
 script.on_event(defines.events.on_built_entity, function(event)
+    if event.created_entity.name == TB_NAME then
+        event.created_entity.force = "enemy"
+    end
     --Only do things if the created entity is a Detonation Coordinator
 	if event.created_entity.name == TB_DETONATION_COORDINATOR_NAME then
         --Store dc in this player's list
@@ -51,15 +54,16 @@ end)
 
 function getAdjacentBombs(entity, playerIndex)
         game.players[1].print("getting adjacent bombs")
---        local adjacentBombs = entity.surface.find_entities_filtered({type = "tile", area = {{entity.position.x - 10, entity.position.y - 10}, {entity.position.x + 10, entity.position.y + 10}}, name = TB_NAME})
+        local adjacentBombs = entity.surface.find_entities_filtered({area = {{entity.position.x - 1, entity.position.y - 1}, {entity.position.x + 1, entity.position.y + 1}}, name = TB_NAME})
 --        local adjacentBombs = entity.surface.find_entities({{entity.position.x - 1, entity.position.y - 1}, {entity.position.x + 1, entity.position.y + 1}})
-        local adjacentBombs = {}
+--[[        local adjacentBombs = {}
         local x, y
         for x = -1, 1, 1 do
             for y = -1, 1, 1 do
                 table.insert(adjacentBombs, global.tbdata[playerIndex].detonation.surface.get_tile(entity.position.x + x, entity.position.y + y))
             end
         end
+        --]]
         game.players[1].print(#adjacentBombs .. " adjacent bombs found")
         for _, bomb in pairs(adjacentBombs) do
             game.players[1].print("Found: " .. bomb.name)
@@ -84,7 +88,7 @@ function detonateCurrentStage(player)
         if bomb.valid then
             game.players[1].print("bomb valid")
             getAdjacentBombs(bomb, player.index)
-            detonate(bomb, player.index)
+            detonate(bomb)
         else
             player.print("Invalid Bomb Reached")
         end
@@ -99,11 +103,12 @@ function detonateCurrentStage(player)
     end
 end
 
-function detonate(bomb, playerIndex)
+function detonate(bomb)
     game.players[1].print("Detonating")
-    local lamp = global.tbdata[playerIndex].detonation.surface.create_entity({name = TB_EXPLOSION_NAME, position = bomb.position})
-    game.players[1].print("Created " .. lamp.name .. " at " .. getEntityCoords(bomb))
-    lamp.die()
-    game.players[1].print("Lamp Destroyed")
-    global.tbdata[playerIndex].detonation.surface.create_entity({name = "water", position = bomb.position})
+    --local lamp = global.tbdata[playerIndex].detonation.surface.create_entity({name = TB_EXPLOSION_NAME, position = bomb.position})
+    --game.players[1].print("Created " .. lamp.name .. " at " .. getEntityCoords(bomb))
+    --lamp.die()
+    --game.players[1].print("Lamp Destroyed")
+    --global.tbdata[playerIndex].detonation.surface.create_entity({name = "water", position = bomb.position})
+    bomb.die()
 end

@@ -1,100 +1,17 @@
 data:extend({
 	
     {
-    type = "tile",
-    name = TB_NAME,
-    needs_correction = false,
-    minable = {hardness = 0.2, mining_time = 0.5, result = TB_NAME},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-    collision_mask = {"ground-tile"},
-    walking_speed_modifier = 1,
-    layer = 60,
-    decorative_removal_probability = 0.6,
-    variants =
-    {
-      main =
-      {
-        {
-          picture = "__base__/graphics/terrain/stone-path/stone-path-1.png",
-          count = 16,
-          size = 1
-        },
-        {
-          picture = "__base__/graphics/terrain/stone-path/stone-path-2.png",
-          count = 4,
-          size = 2,
-          probability = 0.39,
-        },
-        {
-          picture = "__base__/graphics/terrain/stone-path/stone-path-4.png",
-          count = 4,
-          size = 4,
-          probability = 1,
-        },
-      },
-      inner_corner =
-      {
-        picture = "__base__/graphics/terrain/stone-path/stone-path-inner-corner.png",
-        count = 8
-      },
-      outer_corner =
-      {
-        picture = "__base__/graphics/terrain/stone-path/stone-path-outer-corner.png",
-        count = 1
-      },
-      side =
-      {
-        picture = "__base__/graphics/terrain/stone-path/stone-path-side.png",
-        count = 10
-      },
-      u_transition =
-      {
-        picture = "__base__/graphics/terrain/stone-path/stone-path-u.png",
-        count = 10
-      },
-      o_transition =
-      {
-        picture = "__base__/graphics/terrain/stone-path/stone-path-o.png",
-        count = 10
-      }
-    },
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.2
-      },
-      {
-        filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.2
-      },
-      {
-        filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.2
-      },
-      {
-        filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.2
-      }
-    },
-    map_color={r=100, g=0, b=0},
-    ageing=0,
-    vehicle_friction_modifier = 1,
-    dying_explosion = "massive-explosion"
-  },
-
-  {
 		type = "lamp",
-		name =  TB_EXPLOSION_NAME,
-		icon = "__TrenchBombs__/graphics/trench_bombs_explosion.png",
+		name =  TB_NAME,
+		icon = "__TrenchBombs__/graphics/trench_bomb.png",
 		flags = {"not-on-map"},
 		order = "y",
 		max_health = 1,
 		corpse = "small-remnants",
-		dying_explosion = "big-explosion",
+		dying_explosion = "massive-explosion",
 		render_layer = "lower-object",
-		collision_box = {{0, 0}, {0, 0}},
-		selection_box = {{0, 0}, {0, 0}},
+        collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
+        selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 		energy_source =
 		{
 			type = "electric",
@@ -104,21 +21,21 @@ data:extend({
 		light = {intensity = 0.0, size = 0},
 		picture_off =
 		{
-			filename = "__TrenchBombs__/graphics/trench_bombs_explosion.png",
+			filename = "__TrenchBombs__/graphics/trench_bomb.png",
 			x = 0,
 			y = 0,
-			width = 1,
-			height = 1,
+			width = 32,
+			height = 32,
 			frame_count = 1,
 			shift = {0.07, 0.07}
 		},
 		picture_on =
 		{
-			filename = "__TrenchBombs__/graphics/trench_bombs_explosion.png",
+			filename = "__TrenchBombs__/graphics/trench_bomb.png",
 			x = 0,
 			y = 0,
-			width = 1,
-			height = 1,
+			width = 32,
+			height = 32,
 			frame_count = 1,
 			shift = {0.07, 0.07}
 		},
