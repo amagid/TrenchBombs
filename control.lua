@@ -172,7 +172,7 @@ function findNearbyWater(surface, x, y)
         for j = -3, 3, 3 do
             if surface.get_tile(x + i, y + j).name == "water" then
                 table.insert(tiles, {name = "water", position = {x = x + (i / 3), y = y + (j / 3)}})
-                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 3), y = y + (2 * j / 3)}})
+--                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 3), y = y + (2 * j / 3)}})
                 game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
             end
         end
@@ -182,7 +182,7 @@ function findNearbyWater(surface, x, y)
         for j = -4, 4, 4 do
             if surface.get_tile(x + i, y + j).name == "water" then
                 table.insert(tiles, {name = "water", position = {x = x + (i / 4), y = y + (j / 4)}})
-                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 4), y = y + (2 * j / 4)}})
+--                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 4), y = y + (2 * j / 4)}})
                 table.insert(tiles, {name = "water", position = {x = x + (3 * i / 4), y = y + (3 * j / 4)}})
                 game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
             end
