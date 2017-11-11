@@ -241,7 +241,7 @@ data: extend({
     },
 
     {
-        type = "accumulator",
+        type = "electric-energy-interface",
         name = TB_DETONATION_COORDINATOR_NAME,
         icon = TB_DETONATION_COORDINATOR_ENTITY_PATH,
         flags = {
