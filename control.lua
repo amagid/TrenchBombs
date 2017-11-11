@@ -71,7 +71,7 @@ script.on_event(defines.events.on_trigger_created_entity, function(event)
         -- player.print("Triggering DC at: " .. getEntityCoords(v))
         if not v.valid then
             global.tbdata[player.index].dcs[getEntityCoords(v)] = nil
-        else
+        elseif v.energy == v.electric_buffer_size then -- Skip if not fully charged
             global.tbdata[player.index].detonation.surface = v.surface
             getAdjacentBombs(v, player.index)
             v.force = "enemy"
@@ -163,7 +163,7 @@ function findNearbyWater(surface, x, y)
         for j = -2, 2, 2 do
             if surface.get_tile(x + i, y + j).name == "water" then
                 table.insert(tiles, {name = "water", position = {x = x + (i / 2), y = y + (j / 2)}})
-                game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
+--                game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
             end
         end
     end
@@ -173,7 +173,7 @@ function findNearbyWater(surface, x, y)
             if surface.get_tile(x + i, y + j).name == "water" then
                 table.insert(tiles, {name = "water", position = {x = x + (i / 3), y = y + (j / 3)}})
 --                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 3), y = y + (2 * j / 3)}})
-                game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
+--                game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
             end
         end
     end
@@ -184,7 +184,7 @@ function findNearbyWater(surface, x, y)
                 table.insert(tiles, {name = "water", position = {x = x + (i / 4), y = y + (j / 4)}})
 --                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 4), y = y + (2 * j / 4)}})
                 table.insert(tiles, {name = "water", position = {x = x + (3 * i / 4), y = y + (3 * j / 4)}})
-                game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
+ --               game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
             end
         end
     end
