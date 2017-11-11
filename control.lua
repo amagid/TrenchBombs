@@ -4,22 +4,30 @@ require "util"
 require("config.constants")
 require("helpers")
 
+TB_DETONATION_EVENT = script.generate_event_name()
+
 script.on_init(function()
     global.tbdata = TB_DEFAULT_PUBLIC_DATA
 end)
 
-script.on_tick(function()
-    if global.tbdata.counter <= 0 then
-        script.raise_event(TB_DETONATION_EVENT, global.tbdata.detonationsInProgress)
-        global.tbdata.counter = TB_DETONATION_DELAY
-    else
-        global.tbdata.counter = global.tbdata.counter - 1
+script.on_event(defines.events.on_tick, function()
+    if #global.tbdata.detonationsInProgress ~= 0 then
+        if global.tbdata.counter <= 0 then
+            script.raise_event(TB_DETONATION_EVENT, global.tbdata.detonationsInProgress)
+            global.tbdata.counter = TB_DETONATION_DELAY
+        else
+            global.tbdata.counter = global.tbdata.counter - 1
+        end
     end
 end)
 
 script.on_event(TB_DETONATION_EVENT, function(detonationsInProgress)
     for k, v in pairs(detonationsInProgress) do
-        detonateCurrentStage(v)
+        if type(k) == "number" and type(v) == "table" then
+            game.players[1].print("k: " .. k)
+            game.players[1].print(" v.index: " .. v.index)
+            detonateCurrentStage(v)
+        end
     end
 end)
 
@@ -55,6 +63,7 @@ end)
 script.on_event(defines.events.on_trigger_created_entity, function(event)
     event.entity.last_user.print("Triggered")
     local player = event.entity.last_user
+
     event.entity.destroy()
 
     for k,v in pairs(global.tbdata[player.index].dcs) do
@@ -64,7 +73,8 @@ script.on_event(defines.events.on_trigger_created_entity, function(event)
     end
 
     advanceDetonationStage(player.index)
-    detonateCurrentStage(player)
+    global.tbdata.detonationsInProgress[player.index] = player
+    game.players[1].print("adding player to list: #" .. player.index)
 end)
 
 function getAdjacentBombs(entity, playerIndex)
@@ -112,9 +122,9 @@ function detonateCurrentStage(player)
     game.players[1].print("done detonating bombs for this stage")
     advanceDetonationStage(player.index)
     game.players[1].print("stage advanced")
-    if global.tbdata[player.index].detonation.currentStage[1] ~= nil then
-        game.players[1].print("detonating next stage")
-        detonateCurrentStage(player)
+    if global.tbdata[player.index].detonation.currentStage[1] == nil then
+        game.players[1].print("Detonation Finished")
+        global.tbdata.detonationsInProgress[player.index] = nil
     end
 end
 

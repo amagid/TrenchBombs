@@ -37,6 +37,6 @@ TB_DEFAULT_PUBLIC_DATA = {
     detonationsInProgress = {}
 }
 
-TB_DETONATION_DELAY = 10
+TB_DETONATION_DELAY = 5
 
 TB_DETONATION_EVENT = "trench_bombs_detonation_event"
