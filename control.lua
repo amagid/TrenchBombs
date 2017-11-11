@@ -42,8 +42,12 @@ script.on_event(defines.events.on_player_created, function(event)
 end)
 
 script.on_event(defines.events.on_built_entity, function(event)
+    if event.created_entity.name == TB_NAME then
+        event.created_entity.operable = false
+    end
     --Only do things if the created entity is a Detonation Coordinator
 	if event.created_entity.name == TB_DETONATION_COORDINATOR_NAME then
+        event.created_entity.operable = false
         --Store dc in this player's list
         global.tbdata[event.player_index].dcs[getEntityCoords(event.created_entity)] = event.created_entity
 	end
