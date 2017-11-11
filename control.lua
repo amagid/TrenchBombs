@@ -24,8 +24,8 @@ end)
 script.on_event(TB_DETONATION_EVENT, function(detonationsInProgress)
     for k, v in pairs(detonationsInProgress) do
         if type(k) == "number" and type(v) == "table" then
-            game.players[1].print("k: " .. k)
-            game.players[1].print(" v.index: " .. v.index)
+            -- game.players[1].print("k: " .. k)
+            -- game.players[1].print(" v.index: " .. v.index)
             detonateCurrentStage(v)
         end
     end
@@ -61,24 +61,24 @@ script.on_event(defines.events.on_player_mined_entity, function(event)
 end)
 
 script.on_event(defines.events.on_trigger_created_entity, function(event)
-    event.entity.last_user.print("Triggered")
+    --event.entity.last_user.print("Triggered")
     local player = event.entity.last_user
 
     event.entity.destroy()
 
     for k,v in pairs(global.tbdata[player.index].dcs) do
-        player.print("Triggering DC at: " .. getEntityCoords(v))
+        -- player.print("Triggering DC at: " .. getEntityCoords(v))
         global.tbdata[player.index].detonation.surface = v.surface
         getAdjacentBombs(v, player.index)
     end
 
     advanceDetonationStage(player.index)
     global.tbdata.detonationsInProgress[player.index] = player
-    game.players[1].print("adding player to list: #" .. player.index)
+    -- game.players[1].print("adding player to list: #" .. player.index)
 end)
 
 function getAdjacentBombs(entity, playerIndex)
-        game.players[1].print("getting adjacent bombs")
+        -- game.players[1].print("getting adjacent bombs")
         local adjacentBombs = entity.surface.find_entities_filtered({area = {{entity.position.x - 1, entity.position.y - 1}, {entity.position.x + 1, entity.position.y + 1}}, name = TB_NAME})
 --        local adjacentBombs = entity.surface.find_entities({{entity.position.x - 1, entity.position.y - 1}, {entity.position.x + 1, entity.position.y + 1}})
 --[[        local adjacentBombs = {}
@@ -89,14 +89,14 @@ function getAdjacentBombs(entity, playerIndex)
             end
         end
         --]]
-        game.players[1].print(#adjacentBombs .. " adjacent bombs found")
+        -- game.players[1].print(#adjacentBombs .. " adjacent bombs found")
         for _, bomb in pairs(adjacentBombs) do
-            game.players[1].print("Found: " .. bomb.name)
+            -- game.players[1].print("Found: " .. bomb.name)
             if bomb.name == TB_NAME then
-                game.players[1].print("Adding bomb to nextStage")
+                -- game.players[1].print("Adding bomb to nextStage")
                 table.insert(global.tbdata[playerIndex].detonation.nextStage, bomb)
             else
-                game.players[1].print("Non-Bomb entity found")
+                -- game.players[1].print("Non-Bomb entity found")
             end                
         end
 end
@@ -107,33 +107,33 @@ function advanceDetonationStage(playerIndex)
 end
 
 function detonateCurrentStage(player)
-    game.players[1].print("detonating current stage")
+    -- game.players[1].print("detonating current stage")
     for _, bomb in pairs(global.tbdata[player.index].detonation.currentStage) do
-        game.players[1].print("Checking a bomb")
+        -- game.players[1].print("Checking a bomb")
         if bomb.valid then
-            game.players[1].print("bomb valid")
+            -- game.players[1].print("bomb valid")
             getAdjacentBombs(bomb, player.index)
             detonate(bomb)
         else
-            player.print("Invalid Bomb Reached")
+            -- player.print("Invalid Bomb Reached")
         end
     end
 
-    game.players[1].print("done detonating bombs for this stage")
+    -- game.players[1].print("done detonating bombs for this stage")
     advanceDetonationStage(player.index)
-    game.players[1].print("stage advanced")
+    -- game.players[1].print("stage advanced")
     if global.tbdata[player.index].detonation.currentStage[1] == nil then
-        game.players[1].print("Detonation Finished")
+        -- game.players[1].print("Detonation Finished")
         global.tbdata.detonationsInProgress[player.index] = nil
     end
 end
 
 function detonate(bomb)
-    game.players[1].print("Detonating")
+    -- game.players[1].print("Detonating")
     --local lamp = global.tbdata[playerIndex].detonation.surface.create_entity({name = TB_EXPLOSION_NAME, position = bomb.position})
-    --game.players[1].print("Created " .. lamp.name .. " at " .. getEntityCoords(bomb))
+    ---- game.players[1].print("Created " .. lamp.name .. " at " .. getEntityCoords(bomb))
     --lamp.die()
-    --game.players[1].print("Lamp Destroyed")
+    ---- game.players[1].print("Lamp Destroyed")
     --global.tbdata[playerIndex].detonation.surface.create_entity({name = "water", position = bomb.position})
     local position = bomb.position
     local surface = bomb.surface
