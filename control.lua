@@ -17,6 +17,12 @@ script.on_tick(function()
     end
 end)
 
+script.on_event(TB_DETONATION_EVENT, function(detonationsInProgress)
+    for k, v in pairs(detonationsInProgress) do
+        detonateCurrentStage(v)
+    end
+end)
+
 script.on_event(defines.events.on_player_created, function(event)
 	if not global.tbdata then
 		global.tbdata = TB_DEFAULT_PUBLIC_DATA
