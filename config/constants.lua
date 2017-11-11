@@ -31,3 +31,10 @@ TB_DEFAULT_PRIVATE_DATA = {
         surface = {}
     }
 }
+
+TB_DEFAULT_PUBLIC_DATA = {
+    counter = 0,
+    detonationsInProgress = {}
+}
+
+TB_DETONATION_DELAY = 10

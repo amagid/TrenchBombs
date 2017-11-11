@@ -5,12 +5,21 @@ require("config.constants")
 require("helpers")
 
 script.on_init(function()
-    global.tbdata = {}
+    global.tbdata = TB_DEFAULT_PUBLIC_DATA
+end)
+
+script.on_tick(function()
+    if global.tbdata.counter <= 0 then
+        script.raise_event(TB_DETONATION_EVENT, global.tbdata.detonationsInProgress)
+        global.tbdata.counter = TB_DETONATION_DELAY
+    else
+        global.tbdata.counter = global.tbdata.counter - 1
+    end
 end)
 
 script.on_event(defines.events.on_player_created, function(event)
 	if not global.tbdata then
-		global.tbdata = {}
+		global.tbdata = TB_DEFAULT_PUBLIC_DATA
 	end
 
 	local player = game.players[event.player_index]
