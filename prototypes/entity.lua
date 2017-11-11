@@ -84,11 +84,68 @@ data:extend({
   },
 
   {
+		type = "lamp",
+		name =  TB_EXPLOSION_NAME,
+		icon = "__TrenchBombs__/graphics/trench_bombs_explosion.png",
+		flags = {"not-on-map"},
+		order = "y",
+		max_health = 1,
+		corpse = "small-remnants",
+		dying_explosion = "big-explosion",
+		render_layer = "lower-object",
+		collision_box = {{0, 0}, {0, 0}},
+		selection_box = {{0, 0}, {0, 0}},
+		energy_source =
+		{
+			type = "electric",
+			usage_priority = "secondary-input"
+		},
+		energy_usage_per_tick = "0KW",
+		light = {intensity = 0.0, size = 0},
+		picture_off =
+		{
+			filename = "__TrenchBombs__/graphics/trench_bombs_explosion.png",
+			x = 0,
+			y = 0,
+			width = 1,
+			height = 1,
+			frame_count = 1,
+			shift = {0.07, 0.07}
+		},
+		picture_on =
+		{
+			filename = "__TrenchBombs__/graphics/trench_bombs_explosion.png",
+			x = 0,
+			y = 0,
+			width = 1,
+			height = 1,
+			frame_count = 1,
+			shift = {0.07, 0.07}
+		},
+
+		circuit_wire_connection_point =
+		{
+			shadow =
+			{
+				red = {0.4, 0.4},
+				green = {-0.4, 0.4},
+			},
+			wire =
+			{
+				red = {0.4, 0.4},
+				green = {-0.4, 0.4},
+			}
+		},
+
+		circuit_wire_max_distance = 0.1
+	},
+
+  {
     type = "constant-combinator",
-    name = TB_DETONATOR_NAME,
-    icon = TB_DETONATOR_ENTITY_PATH,
+    name = TB_DETONATION_COORDINATOR_NAME,
+    icon = TB_DETONATION_COORDINATOR_ENTITY_PATH,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = TB_DETONATOR_NAME},
+    minable = {hardness = 0.2, mining_time = 0.5, result = TB_DETONATION_COORDINATOR_NAME},
     max_health = 50,
     corpse = "small-remnants",
     dying_explosion = "explosion-hit",

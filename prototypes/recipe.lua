@@ -5,7 +5,17 @@ data:extend({
 		enabled = true,
 		ingredients = {
 		},
-		result = TB_NAME
+		result = TB_NAME,
+        energy_required = 0.1
+	},
+	{
+		type = "recipe",
+		name = TB_DETONATION_COORDINATOR_NAME,
+		enabled = true,
+		ingredients = {
+		},
+		result = TB_DETONATION_COORDINATOR_NAME,
+        energy_required = 0.1
 	},
 	{
 		type = "recipe",
@@ -13,6 +23,7 @@ data:extend({
 		enabled = true,
 		ingredients = {
 		},
-		result = TB_DETONATOR_NAME
+		result = TB_DETONATOR_NAME,
+        energy_required = 0.1
 	}
 })
