@@ -42,9 +42,6 @@ script.on_event(defines.events.on_player_created, function(event)
 end)
 
 script.on_event(defines.events.on_built_entity, function(event)
-    if event.created_entity.name == TB_NAME then
-        event.created_entity.force = "enemy"
-    end
     --Only do things if the created entity is a Detonation Coordinator
 	if event.created_entity.name == TB_DETONATION_COORDINATOR_NAME then
         --Store dc in this player's list
@@ -137,6 +134,9 @@ function detonate(bomb)
     --global.tbdata[playerIndex].detonation.surface.create_entity({name = "water", position = bomb.position})
     local position = bomb.position
     local surface = bomb.surface
+    --So that you don't get a warning when it's destroyed
+    bomb.force = "enemy"
+    --Detonate bomb
     bomb.die()
     surface.set_tiles({{name = "water", position = position}})
 end
