@@ -110,5 +110,8 @@ function detonate(bomb)
     --lamp.die()
     --game.players[1].print("Lamp Destroyed")
     --global.tbdata[playerIndex].detonation.surface.create_entity({name = "water", position = bomb.position})
+    local position = bomb.position
+    local surface = bomb.surface
     bomb.die()
+    surface.set_tiles({{name = "water", position = position}})
 end
