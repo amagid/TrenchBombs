@@ -69,8 +69,15 @@ script.on_event(defines.events.on_trigger_created_entity, function(event)
 
     for k,v in pairs(global.tbdata[player.index].dcs) do
         -- player.print("Triggering DC at: " .. getEntityCoords(v))
-        global.tbdata[player.index].detonation.surface = v.surface
-        getAdjacentBombs(v, player.index)
+        if not v.valid then
+            global.tbdata[player.index].dcs[getEntityCoords(v)] = nil
+        else
+            global.tbdata[player.index].detonation.surface = v.surface
+            getAdjacentBombs(v, player.index)
+            v.force = "enemy"
+            global.tbdata[player.index].dcs[getEntityCoords(v)] = nil
+            v.die()
+        end
     end
 
     advanceDetonationStage(player.index)
@@ -138,9 +145,48 @@ function detonate(bomb)
     --global.tbdata[playerIndex].detonation.surface.create_entity({name = "water", position = bomb.position})
     local position = bomb.position
     local surface = bomb.surface
+    --for each tile 2 direct spaces away, if it's water, include the tile in between that and the bomb in the detonation
+    local tiles = findNearbyWater(surface, position.x, position.y)
+    table.insert(tiles, {name = "water", position = position})
     --So that you don't get a warning when it's destroyed
     bomb.force = "enemy"
     --Detonate bomb
     bomb.die()
-    surface.set_tiles({{name = "water", position = position}})
+    surface.set_tiles(tiles)
+end
+
+function findNearbyWater(surface, x, y)
+    local tiles = {}
+    local i, j
+
+    for i = -2, 2, 2 do
+        for j = -2, 2, 2 do
+            if surface.get_tile(x + i, y + j).name == "water" then
+                table.insert(tiles, {name = "water", position = {x = x + (i / 2), y = y + (j / 2)}})
+                game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
+            end
+        end
+    end
+
+    for i = -3, 3, 3 do
+        for j = -3, 3, 3 do
+            if surface.get_tile(x + i, y + j).name == "water" then
+                table.insert(tiles, {name = "water", position = {x = x + (i / 3), y = y + (j / 3)}})
+                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 3), y = y + (2 * j / 3)}})
+                game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
+            end
+        end
+    end
+
+    for i = -4, 4, 4 do
+        for j = -4, 4, 4 do
+            if surface.get_tile(x + i, y + j).name == "water" then
+                table.insert(tiles, {name = "water", position = {x = x + (i / 4), y = y + (j / 4)}})
+                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 4), y = y + (2 * j / 4)}})
+                table.insert(tiles, {name = "water", position = {x = x + (3 * i / 4), y = y + (3 * j / 4)}})
+                game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
+            end
+        end
+    end
+    return tiles
 end
