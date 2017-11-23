@@ -1,4 +1,16 @@
-data:extend({
+data: extend({
+    {
+        type = "item-group",
+        name = "trench-bombs",
+        order = "c",
+        icon = "__base__/graphics/item-group/intermediate-products.png",
+    },
+    {
+        type = "item-subgroup",
+            name = "trench-bombs-items",
+            group = "trench-bombs",
+            order = "a"
+    },
     {
         type = "fluid",
         name = TB_SHOTCRETE_NAME,
