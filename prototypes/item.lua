@@ -349,6 +349,16 @@ data: extend({
 
     {
         type = "item",
+        name = TB_CHARGE_DETONATOR_NAME,
+        icon = TB_CHARGE_DETONATOR_ICON_PATH,
+        flags = {
+            "goes-to-quickbar"
+        },
+        stack_size = 200
+    },
+
+    {
+        type = "item",
         name = TB_ANFO_NAME,
         icon = TB_ANFO_ICON_PATH,
         flags = {

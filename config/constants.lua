@@ -41,6 +41,9 @@ TB_DETONATION_DELAY = 5
 
 TB_DETONATION_EVENT = "trench_bombs_detonation_event"
 
+TB_CHARGE_DETONATOR_NAME = "trench_bombs_charge_detonator"
+TB_CHARGE_DETONATOR_PRETTY_NAME = "Trench Charge Detonator"
+TB_CHARGE_DETONATOR_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_charge_detonator_icon.png"
 
 TB_SCAFFOLDING_NAME = "trench_bombs_scaffolding"
 TB_SCAFFOLDING_PRETTY_NAME = "Trench Scaffolding"
