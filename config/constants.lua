@@ -40,3 +40,48 @@ TB_DEFAULT_PUBLIC_DATA = {
 TB_DETONATION_DELAY = 5
 
 TB_DETONATION_EVENT = "trench_bombs_detonation_event"
+
+
+TB_SCAFFOLDING_NAME = "trench_bombs_scaffolding"
+TB_SCAFFOLDING_PRETTY_NAME = "Trench Scaffolding"
+TB_SCAFFOLDING_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_scaffolding_icon.png"
+
+TB_SHOTCRETE_POUCH_NAME = "trench_bombs_shotcrete_pouch"
+TB_SHOTCRETE_POUCH_PRETTY_NAME = "Shotcrete Pouch"
+TB_SHOTCRETE_POUCH_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_shotcrete_pouch_icon.png"
+
+TB_SHOTCRETE_NAME = "trench_bombs_shotcrete"
+TB_SHOTCRETE_PRETTY_NAME = "Shotcrete"
+TB_SHOTCRETE_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_shotcrete_icon.png"
+
+TB_PRIMED_ANFO_NAME = "trench_bombs_primed_anfo"
+TB_PRIMED_ANFO_PRETTY_NAME = "Primed ANFO Explosive"
+TB_PRIMED_ANFO_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_primed_anfo_icon.png"
+
+TB_ANFO_NAME = "trench_bombs_anfo"
+TB_ANFO_PRETTY_NAME = "Ammonium-Nitrate-Fuel-Oil Explosive"
+TB_ANFO_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_anfo_icon.png"
+
+TB_SECONDARY_EXPLOSIVE_NAME = "trench_bombs_secondary_explosive"
+TB_SECONDARY_EXPLOSIVE_PRETTY_NAME = "Secondary Explosive"
+TB_SECONDARY_EXPLOSIVE_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_secondary_explosive_icon.png"
+
+TB_BLASTING_CAP_NAME = "trench_bombs_blasting_cap"
+TB_BLASTING_CAP_PRETTY_NAME = "Blasting Cap"
+TB_BLASTING_CAP_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_blasting_cap_icon.png"
+
+TB_AMMONIUM_NITRATE_NAME = "trench_bombs_ammonium_nitrate"
+TB_AMMONIUM_NITRATE_PRETTY_NAME = "Ammonium Nitrate"
+TB_AMMONIUM_NITRATE_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_ammonium_nitrate_icon.png"
+
+TB_POWDERED_ALUMINUM_NAME = "trench_bombs_powdered_aluminum"
+TB_POWDERED_ALUMINUM_PRETTY_NAME = "Powdered Aluminum"
+TB_POWDERED_ALUMINUM_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_powdered_aluminum_icon.png"
+
+TB_LEAD_AZIDE_NAME = "trench_bombs_lead_azide"
+TB_LEAD_AZIDE_PRETTY_NAME = "Lead Azide"
+TB_LEAD_AZIDE_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_lead_azide_icon.png"
+
+TB_AMMONIA_NAME = "trench_bombs_ammonia"
+TB_AMMONIA_PRETTY_NAME = "Ammonia"
+TB_AMMONIA_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_ammonia_icon.png"

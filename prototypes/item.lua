@@ -315,5 +315,95 @@ data: extend({
                 0.609375
             }
         }
+    },
+
+    {
+        type = "item",
+        name = TB_SCAFFOLDING_NAME,
+        icon = TB_SCAFFOLDING_ICON_PATH,
+        flags = {
+            "goes-to-quickbar"
+        },
+        stack_size = 200
+    },
+
+    {
+        type = "item",
+        name = TB_SHOTCRETE_POUCH_NAME,
+        icon = TB_SHOTCRETE_POUCH_ICON_PATH,
+        flags = {
+            "goes-to-quickbar"
+        },
+        stack_size = 200
+    },
+
+    {
+        type = "item",
+        name = TB_PRIMED_ANFO_NAME,
+        icon = TB_PRIMED_ANFO_ICON_PATH,
+        flags = {
+            "goes-to-quickbar"
+        },
+        stack_size = 200
+    },
+
+    {
+        type = "item",
+        name = TB_ANFO_NAME,
+        icon = TB_ANFO_ICON_PATH,
+        flags = {
+            "goes-to-quickbar"
+        },
+        stack_size = 200
+    },
+
+    {
+        type = "item",
+        name = TB_SECONDARY_EXPLOSIVE_NAME,
+        icon = TB_SECONDARY_EXPLOSIVE_ICON_PATH,
+        flags = {
+            "goes-to-quickbar"
+        },
+        stack_size = 200
+    },
+
+    {
+        type = "item",
+        name = TB_BLASTING_CAP_NAME,
+        icon = TB_BLASTING_CAP_ICON_PATH,
+        flags = {
+            "goes-to-quickbar"
+        },
+        stack_size = 200
+    },
+
+    {
+        type = "item",
+        name = TB_AMMONIUM_NITRATE_NAME,
+        icon = TB_AMMONIUM_NITRATE_ICON_PATH,
+        flags = {
+            "goes-to-quickbar"
+        },
+        stack_size = 200
+    },
+
+    {
+        type = "item",
+        name = TB_POWDERED_ALUMINUM_NAME,
+        icon = TB_POWDERED_ALUMINUM_ICON_PATH,
+        flags = {
+            "goes-to-quickbar"
+        },
+        stack_size = 200
+    },
+
+    {
+        type = "item",
+        name = TB_LEAD_AZIDE_NAME,
+        icon = TB_LEAD_AZIDE_ICON_PATH,
+        flags = {
+            "goes-to-quickbar"
+        },
+        stack_size = 200
     }
 })

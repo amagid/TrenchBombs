@@ -152,6 +152,7 @@ function detonate(bomb)
     bomb.force = "enemy"
     --Detonate bomb
     bomb.die()
+    killEntities(surface, tiles)
     surface.set_tiles(tiles)
 end
 
@@ -172,7 +173,7 @@ function findNearbyWater(surface, x, y)
         for j = -3, 3, 3 do
             if surface.get_tile(x + i, y + j).name == "water" then
                 table.insert(tiles, {name = "water", position = {x = x + (i / 3), y = y + (j / 3)}})
---                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 3), y = y + (2 * j / 3)}})
+                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 3), y = y + (2 * j / 3)}})
 --                game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
             end
         end
@@ -182,11 +183,26 @@ function findNearbyWater(surface, x, y)
         for j = -4, 4, 4 do
             if surface.get_tile(x + i, y + j).name == "water" then
                 table.insert(tiles, {name = "water", position = {x = x + (i / 4), y = y + (j / 4)}})
---                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 4), y = y + (2 * j / 4)}})
+                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 4), y = y + (2 * j / 4)}})
                 table.insert(tiles, {name = "water", position = {x = x + (3 * i / 4), y = y + (3 * j / 4)}})
  --               game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
             end
         end
     end
     return tiles
+end
+
+-- Kill all of the entities on the listed tiles before changing them to water
+function killEntities(surface, tiles)
+    local entity
+    for _, v in pairs(tiles) do
+        entity = surface.find_entities({{v.position.x - 0.001, v.position.y - 0.001}, {v.position.x + 0.001, v.position.y + 0.001}})
+        for _, e in pairs(entity) do
+            game.players[1].print("Trying to kill entity '" .. e.name .. "' at position (" .. v.position.x .. ", " .. v.position.y .. ")")
+            if e.valid and e.health ~= nil and e.destructible and (e.has_flag("placeable-player") or e.has_flag("placeable-neutral") or e.has_flag("placeable-enemy")) then
+                game.players[1].print("Killing.")
+                e.die()
+            end
+        end
+    end
 end
