@@ -158,37 +158,48 @@ end
 
 function findNearbyWater(surface, x, y)
     local tiles = {}
-    local i, j
+    local k, i, j
+    local coords = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}}
 
-    for i = -2, 2, 2 do
-        for j = -2, 2, 2 do
+    for k = 1, 4, 1 do
+        if coords[k] ~= nil then
+            i = 2 * coords[k][1]
+            j = 2 * coords[k][2]
             if surface.get_tile(x + i, y + j).name == "water" then
                 table.insert(tiles, {name = "water", position = {x = x + (i / 2), y = y + (j / 2)}})
---                game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
+                coords[k] = nil
+--              game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
             end
         end
     end
 
-    for i = -3, 3, 3 do
-        for j = -3, 3, 3 do
+    for k = 1, 4, 1 do
+        if coords[k] ~= nil then
+            i = 3 * coords[k][1]
+            j = 3 * coords[k][2]
             if surface.get_tile(x + i, y + j).name == "water" then
                 table.insert(tiles, {name = "water", position = {x = x + (i / 3), y = y + (j / 3)}})
-                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 3), y = y + (2 * j / 3)}})
---                game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
+                table.insert(tiles, {name = "water", position = {x = x + 2 * (i / 3), y = y + 2 * (j / 3)}})
+                coords[k] = nil
+--              game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
             end
         end
     end
 
-    for i = -4, 4, 4 do
-        for j = -4, 4, 4 do
+    for k = 1, 4, 1 do
+        if coords[k] ~= nil then
+            i = 4 * coords[k][1]
+            j = 4 * coords[k][2]
             if surface.get_tile(x + i, y + j).name == "water" then
                 table.insert(tiles, {name = "water", position = {x = x + (i / 4), y = y + (j / 4)}})
-                table.insert(tiles, {name = "water", position = {x = x + (2 * i / 4), y = y + (2 * j / 4)}})
-                table.insert(tiles, {name = "water", position = {x = x + (3 * i / 4), y = y + (3 * j / 4)}})
- --               game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
+                table.insert(tiles, {name = "water", position = {x = x + 2 * (i / 4), y = y + 2 * (j / 4)}})
+                table.insert(tiles, {name = "water", position = {x = x + 3 * (i / 4), y = y + 3 * (j / 4)}})
+                coords[k] = nil
+--              game.players[1].print("Found water at position (x + " .. i .. ", y + " .. j .. ")")
             end
         end
     end
+    
     return tiles
 end
 
