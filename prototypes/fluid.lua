@@ -3,7 +3,8 @@ data: extend({
         type = "item-group",
         name = "trench-bombs",
         order = "c",
-        icon = "__base__/graphics/item-group/intermediate-products.png",
+        icon = TB_GROUP_ICON_PATH,
+        icon_size = TB_GROUP_ICON_SIZE
     },
     {
         type = "item-subgroup",

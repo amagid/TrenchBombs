@@ -88,3 +88,6 @@ TB_LEAD_AZIDE_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_lead_azide_icon
 TB_AMMONIA_NAME = "trench_bombs_ammonia"
 TB_AMMONIA_PRETTY_NAME = "Ammonia"
 TB_AMMONIA_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_ammonia_icon.png"
+
+TB_GROUP_ICON_PATH = "__TrenchBombs__/graphics/trench_bombs_group_icon.png"
+TB_GROUP_ICON_SIZE = 64
