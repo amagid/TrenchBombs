@@ -3,6 +3,7 @@ data: extend({
         type = "item",
             name = TB_NAME,
             icon = TB_ICON_PATH,
+            icon_size = 32,
             flags = {
                 "goes-to-quickbar"
             },
@@ -14,6 +15,7 @@ data: extend({
         type = "item",
         name = TB_DETONATION_COORDINATOR_NAME,
         icon = TB_DETONATION_COORDINATOR_ICON_PATH,
+        icon_size = 32,
         flags = {
             "goes-to-quickbar"
         },
@@ -25,6 +27,7 @@ data: extend({
         type = "capsule",
         name = TB_DETONATOR_NAME,
         icon = TB_DETONATOR_ICON_PATH,
+        icon_size = 32,
         flags = {
             "goes-to-quickbar"
         },
@@ -136,6 +139,7 @@ data: extend({
         type = "combat-robot",
         name = TB_DETONATION_COMMAND,
         icon = "__base__/graphics/icons/defender.png",
+        icon_size = 32,
         flags = {
             "placeable-player",
             "player-creation",

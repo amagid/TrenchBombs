@@ -1,9 +1,10 @@
 data: extend({
 
     {
-        type = "constant-combinator",
+        type = "container",
             name = TB_NAME,
-            icon = "__TrenchBombs__/graphics/trench_bomb.png",
+            icon = TB_ENTITY_PATH,
+            icon_size = 32,
             flags = {
                 "not-on-map"
             },
@@ -12,6 +13,17 @@ data: extend({
             max_health = 1,
             dying_explosion = "massive-explosion",
             render_layer = "lower-object",
+            open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
+            close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
+            inventory_size = 1,
+            picture =
+            {
+              filename = TB_ENTITY_PATH,
+              priority = "extra-high",
+              width = 32,
+              height = 32,
+              shift = {0, 0}
+            },
             collision_box = {
                 {
                     -0.35, -0.35
@@ -37,120 +49,6 @@ data: extend({
                 count = 1
             },
             item_slot_count = 0,
-
-            sprites = {
-                north = {
-                    filename = "__TrenchBombs__/graphics/trench_bomb.png",
-                    x = 0,
-                    y = 0,
-                    width = 32,
-                    height = 32,
-                    frame_count = 1,
-                    shift = {
-                        0.140625,
-                        0.140625
-                    },
-                },
-                east = {
-                    filename = "__TrenchBombs__/graphics/trench_bomb.png",
-                    x = 0,
-                    y = 0,
-                    width = 32,
-                    height = 32,
-                    frame_count = 1,
-                    shift = {
-                        0.140625,
-                        0.140625
-                    },
-                },
-                south = {
-                    filename = "__TrenchBombs__/graphics/trench_bomb.png",
-                    x = 0,
-                    y = 0,
-                    width = 32,
-                    height = 32,
-                    frame_count = 1,
-                    shift = {
-                        0.140625,
-                        0.140625
-                    },
-                },
-                west = {
-                    filename = "__TrenchBombs__/graphics/trench_bomb.png",
-                    x = 0,
-                    y = 0,
-                    width = 32,
-                    height = 32,
-                    frame_count = 1,
-                    shift = {
-                        0.140625,
-                        0.140625
-                    },
-                }
-            },
-
-            activity_led_sprites = {
-                north = {
-                    filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-constant-north.png",
-                    width = 11,
-                    height = 10,
-                    frame_count = 1,
-                    shift = {
-                        0.296875,
-                        -0.40625
-                    },
-                },
-                east = {
-                    filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-constant-east.png",
-                    width = 14,
-                    height = 12,
-                    frame_count = 1,
-                    shift = {
-                        0.25,
-                        -0.03125
-                    },
-                },
-                south = {
-                    filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-constant-south.png",
-                    width = 11,
-                    height = 11,
-                    frame_count = 1,
-                    shift = {-0.296875,
-                        -0.078125
-                    },
-                },
-                west = {
-                    filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-constant-west.png",
-                    width = 12,
-                    height = 12,
-                    frame_count = 1,
-                    shift = {-0.21875,
-                        -0.46875
-                    },
-                }
-            },
-
-            activity_led_light = {
-                intensity = 0.8,
-                size = 1,
-            },
-
-            activity_led_light_offsets = {
-                {
-                    0.296875,
-                    -0.40625
-                },
-                {
-                    0.25,
-                    -0.03125
-                },
-                {-0.296875,
-                    -0.078125
-                },
-                {-0.21875,
-                    -0.46875
-                }
-            },
 
             circuit_wire_connection_points = {
                 {
@@ -237,13 +135,14 @@ data: extend({
                 }
             },
 
-            circuit_wire_max_distance = 7.5
+            circuit_wire_max_distance = 0
     },
 
     {
         type = "electric-energy-interface",
         name = TB_DETONATION_COORDINATOR_NAME,
         icon = TB_DETONATION_COORDINATOR_ENTITY_PATH,
+        icon_size = 32,
         flags = {
             "placeable-neutral",
             "player-creation"
@@ -283,27 +182,27 @@ data: extend({
             output_flow_limit = "0kW"
         },
         picture = {
-            filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-            x = 158,
-            y = 126,
-            width = 79,
-            height = 63,
+            filename = TB_DETONATION_COORDINATOR_ENTITY_PATH,
+            x = 0,
+            y = 0,
+            width = 32,
+            height = 32,
             frame_count = 1,
             shift = {
-                0.140625,
-                0.140625
+                0,
+                0
             }
         },
         charge_animation = {
-            filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-            x = 158,
-            y = 126,
-            width = 79,
-            height = 63,
+            filename = TB_DETONATION_COORDINATOR_ENTITY_PATH,
+            x = 0,
+            y = 0,
+            width = 32,
+            height = 32,
             frame_count = 1,
             shift = {
-                0.140625,
-                0.140625
+                0,
+                0
             }
         },
         charge_cooldown = 30,
@@ -317,15 +216,15 @@ data: extend({
             }
         },
         discharge_animation = {
-            filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-            x = 158,
-            y = 126,
-            width = 79,
-            height = 63,
+            filename = TB_DETONATION_COORDINATOR_ENTITY_PATH,
+            x = 0,
+            y = 0,
+            width = 32,
+            height = 32,
             frame_count = 1,
             shift = {
-                0.140625,
-                0.140625
+                0,
+                0
             }
         },
         discharge_cooldown = 60,
